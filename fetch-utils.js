@@ -4,9 +4,11 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+
 export function getUser() {
     return client.auth.session() && client.auth.session().user;
 }
+
 
 export async function signupUser(email, password) {
     const response = await client.auth.signupUser({ email, password });
@@ -16,7 +18,6 @@ export async function signupUser(email, password) {
         console.error(response.error);
     }
 }
-
 
 
 export async function signInUser(email, password) {
@@ -29,14 +30,11 @@ export async function signInUser(email, password) {
 }
 
 
-
 export async function checkAuth() {
     const user = getUser();
     
     if (!user) location.replace('/');
 }
-
-
 
 
 export async function redirectIfLoggedIn() {}
