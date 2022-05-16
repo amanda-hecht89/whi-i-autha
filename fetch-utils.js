@@ -12,21 +12,14 @@ export function getUser() {
 
 export async function signupUser(email, password) {
     const response = await client.auth.signupUser({ email, password });
-    if (response.user) {
-        return response.user;
-    } else {
-        console.error(response.error);
-    }
+    return response.user;
+
 }
 
 
 export async function signInUser(email, password) {
     const response = await client.auth.signInUser({ email, password });
-    if (response.user) {
-        return response.user;
-    } else {
-        console.error(response.error);
-    }
+    return response.user;
 }
 
 
